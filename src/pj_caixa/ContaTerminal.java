@@ -1,5 +1,6 @@
 package pj_caixa;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ContaTerminal {
@@ -20,20 +21,26 @@ public class ContaTerminal {
 		Scanner ler = new Scanner(System.in);
 		//Mensagem Inicial
 		System.out.println("Bem vindo ao banco A");
-		//criando objeto conta
-		System.out.println("Digite o numero da conta:\n");
-		Numero = ler.nextInt();
-		
-		System.out.println("Digite o numero da agência:\n");
-		Agencia = ler.next();
-		
-		System.out.println("Digite o nome do cliente:\n");
-		NomeCliente = ler.next();
-		
-		System.out.println("Digite o saldo:\n");
-		Saldo = ler.nextDouble();
-		
-		System.out.println("Olá "+NomeCliente+", obrigado por criar uma conta em nosso banco, sua agência é "+Agencia+", conta "+Numero+" e seu saldo "+Saldo+" já está disponível para saque");
+		try {
+			//criando objeto conta
+			System.out.println("Digite o numero da conta:\n");
+			Numero = ler.nextInt();
+			
+			System.out.println("Digite o numero da agência:\n");
+			Agencia = ler.next();
+			
+			
+			System.out.println("Digite o nome do cliente:\n");
+			NomeCliente = ler.next();
+			
+			System.out.println("Digite o saldo:\n");
+			Saldo = ler.nextDouble();
+			ler.close();
+			
+			System.out.println("Olá "+NomeCliente+", obrigado por criar uma conta em nosso banco, sua agência é "+Agencia+", conta "+Numero+" e seu saldo "+Saldo+" já está disponível para saque");
+		}catch(InputMismatchException err) {
+			System.out.println("Deu erro!");
+		}
 	}
 
 }
